@@ -121,7 +121,7 @@ public class Registro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConductorActionPerformed
-        FormularioConductor formularioConductor = new FormularioConductor();
+        FormularioC formularioConductor = new FormularioC();
     
     // Hacer visible el formulario
     formularioConductor.setVisible(true);
