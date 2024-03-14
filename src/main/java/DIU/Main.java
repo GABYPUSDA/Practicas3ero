@@ -4,13 +4,18 @@
 
 package DIU;
 
+import DiuVista.Login1;
+
 /**
  *
  * @author DELL
  */
-public class Transcentenario {
+public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Login1 loginFrame = new Login1();
+        
+        // Hacer visible el frame de Login1
+        loginFrame.setVisible(true);
     }
 }
