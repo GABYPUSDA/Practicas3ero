@@ -37,14 +37,14 @@ public class CtlrUsuario {
         this.conductor = conductor;
     }
 
-    public void CrearUsuario(Usuario   U){
+    public void CrearUsuario(Usuario U){
         try {
             String SQL = "call GuardarUsuario('" 
                     + U.getNombre() +"',"
                     + "'" + U.getApellido() + "',"
-                    + "'" + U.getCedula()+ "',"
+                    + "'" + U.getCorreo()+ "',"
                     + "'" + U.getContrasena()+ "',"
-                    + "'" + U.getCorreo()+ "')";
+                    + "'" + U.getCedula()+ "')";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
             if (res > 0) {
