@@ -43,6 +43,7 @@ public class CtlrConductor {
                     + "'" + C.getFechaNacimiento() + "',"
                     + "'" + C.getCedula()+ "',"
                     + "'" + C.getCorreoElectronico() + "',"
+                    + "'" + C.getCelular() + "',"
                     + "'" + C.getTipoLicencia()+"')";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
@@ -65,10 +66,10 @@ public class CtlrConductor {
                 Conductor conductor = new Conductor();
                 conductor.setNombre(resultSet.getString("NOMBRE"));
                 conductor.setApellido(resultSet.getString("APELLIDO"));
-                conductor.setFechaNacimiento(resultSet.getDate("FECHA_NACIMIENTO"));
-                conductor.setCedula(resultSet.getInt("CEDULA"));
+                conductor.setFechaNacimiento(resultSet.getDate("FECHA_NACIMIENTO").toLocalDate());
+                conductor.setCedula(resultSet.getString("CEDULA"));
                 conductor.setCorreoElectronico(resultSet.getString("CORREOELECTRONICO"));
-                conductor.setCelular(resultSet.getInt("CELULAR"));
+                conductor.setCelular(resultSet.getString("CELULAR"));
                 conductor.setTipoLicencia(resultSet.getString("TIPO_LICENCIA"));
                 return conductor;
             } else {

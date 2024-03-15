@@ -4,6 +4,9 @@
  */
 package DiuVista;
 
+import DIU.Vehiculo;
+import DiuControlador.ControlVehiculo;
+
 /**
  *
  * @author DELL
@@ -47,8 +50,8 @@ public class FormularioVehiculo extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         TipoVh1 = new javax.swing.JComboBox<>();
         Marca = new javax.swing.JComboBox<>();
-        Placa = new javax.swing.JTextField();
-        AnioFab = new javax.swing.JTextField();
+        txtPlaca = new javax.swing.JTextField();
+        txtAnioFab = new javax.swing.JTextField();
         BtnGuardar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
@@ -171,10 +174,10 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(AnioFab)
+                            .addComponent(txtAnioFab)
                             .addComponent(TipoVh1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(Marca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Placa)))
+                            .addComponent(txtPlaca)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel13))
@@ -202,11 +205,11 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(Placa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(AnioFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAnioFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel13)
                 .addGap(63, 63, 63)
@@ -231,9 +234,17 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
-        String TipoVh = TipoVh1.getToolTipText();
-        String Marca = this.Marca.getToolTipText();
+        Vehiculo v = new Vehiculo();
+        v.setTipo(TipoVh1.getSelectedItem().toString());
+        v.setMarca(Marca.getSelectedItem().toString());
+        v.setPlaca(txtPlaca.getText());
+        v.setAnio(Integer.parseInt(txtAnioFab.getText()));
         
+        ControlVehiculo cv = new ControlVehiculo();
+        cv.CrearVehiculo(v);
+        Registro r = new Registro();
+        r.setVisible(true);
+        dispose();
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     /**
@@ -272,10 +283,8 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField AnioFab;
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JComboBox<String> Marca;
-    private javax.swing.JTextField Placa;
     private javax.swing.JComboBox<String> TipoVh;
     private javax.swing.JComboBox<String> TipoVh1;
     private javax.swing.JButton jButton1;
@@ -296,5 +305,7 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtAnioFab;
+    private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
 }

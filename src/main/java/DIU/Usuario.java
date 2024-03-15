@@ -14,12 +14,13 @@ public class Usuario {
     private String apellido;
     private String correo;
     private String contrasena;
-    private int cedula;
+    private String cedula;
+    
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombre, String apellido, String correo, String contrasena, int cedula) {
+    public Usuario(int idUsuario, String nombre, String apellido, String correo, String contrasena, String cedula) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -27,6 +28,8 @@ public class Usuario {
         this.contrasena = contrasena;
         this.cedula = cedula;
     }
+
+    
 
     public int getIdUsuario() {
         return idUsuario;
@@ -68,13 +71,15 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+    
     
     
 }
