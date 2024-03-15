@@ -213,10 +213,10 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
+                              <Component id="AnioFab" alignment="0" max="32767" attributes="0"/>
                               <Component id="TipoVh1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Marca" alignment="0" max="32767" attributes="0"/>
+                              <Component id="Placa" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -225,7 +225,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtnGuardar" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
@@ -249,22 +249,22 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Marca" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Placa" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="AnioFab" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtnGuardar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="104" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -316,7 +316,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="Marca">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="6">
@@ -333,14 +333,17 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField3">
+        <Component class="javax.swing.JTextField" name="Placa">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField4">
+        <Component class="javax.swing.JTextField" name="AnioFab">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="BtnGuardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="GUARDAR"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnGuardarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
