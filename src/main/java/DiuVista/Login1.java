@@ -4,6 +4,10 @@
  */
 package DiuVista;
 
+import DIU.Usuario;
+import DiuControlador.CtlrUsuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author DELL
@@ -29,11 +33,11 @@ public class Login1 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        CorreoUser = new javax.swing.JTextField();
+        ContraseUser = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        IniciarSesion = new javax.swing.JButton();
         BtnRegistrarse = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -46,23 +50,26 @@ public class Login1 extends javax.swing.JFrame {
 
         jLabel3.setText("Contraseña:");
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 153));
-        jTextField1.setForeground(new java.awt.Color(153, 255, 153));
-        jTextField1.setBorder(null);
-        jTextField1.setCaretColor(new java.awt.Color(153, 255, 153));
-        jTextField1.setDisabledTextColor(new java.awt.Color(153, 255, 153));
+        CorreoUser.setBackground(new java.awt.Color(153, 255, 153));
+        CorreoUser.setBorder(null);
+        CorreoUser.setCaretColor(new java.awt.Color(153, 255, 153));
+        CorreoUser.setDisabledTextColor(new java.awt.Color(153, 255, 153));
 
-        jTextField2.setBackground(new java.awt.Color(153, 255, 153));
-        jTextField2.setForeground(new java.awt.Color(153, 255, 153));
-        jTextField2.setToolTipText("");
-        jTextField2.setBorder(null);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        ContraseUser.setBackground(new java.awt.Color(153, 255, 153));
+        ContraseUser.setToolTipText("");
+        ContraseUser.setBorder(null);
+        ContraseUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                ContraseUserActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Iniciar Sesión");
+        IniciarSesion.setText("Iniciar Sesión");
+        IniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarSesionActionPerformed(evt);
+            }
+        });
 
         BtnRegistrarse.setText("Registrarse");
         BtnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +82,7 @@ public class Login1 extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("BIENVENIDO ");
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\kevin\\Downloads\\Proyecto\\Practicas3ero\\src\\main\\java\\resources\\userInicio.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\OneDrive\\Documentos\\NetBeansProjects\\Transcentenario\\src\\main\\java\\resources\\userInicio.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,10 +93,10 @@ public class Login1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ContraseUser, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                .addComponent(CorreoUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
@@ -99,7 +106,7 @@ public class Login1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(IniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BtnRegistrarse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 45, Short.MAX_VALUE)))
                 .addContainerGap(72, Short.MAX_VALUE))
@@ -123,17 +130,17 @@ public class Login1 extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CorreoUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ContraseUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(IniciarSesion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnRegistrarse)
                 .addGap(39, 39, 39))
@@ -153,9 +160,9 @@ public class Login1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void ContraseUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseUserActionPerformed
 
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_ContraseUserActionPerformed
 
     private void BtnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarseActionPerformed
         Registro registroFrame = new Registro();
@@ -166,6 +173,20 @@ public class Login1 extends javax.swing.JFrame {
     // Cerrar el JFrame actual (Login1)
     this.dispose();
     }//GEN-LAST:event_BtnRegistrarseActionPerformed
+
+    private void IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarSesionActionPerformed
+        Usuario user =new Usuario ();
+        user.setCorreo(CorreoUser.getText());
+        user.setContrasena(ContraseUser.getText());
+        
+        CtlrUsuario ctlrUsuario = new CtlrUsuario();
+    
+    // Iniciar sesión y verificar si el usuario fue autenticado correctamente
+       boolean sesionIniciada = ctlrUsuario.IniciarSesionUsuario(user);
+      
+     
+        
+    }//GEN-LAST:event_IniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +225,9 @@ public class Login1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnRegistrarse;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField ContraseUser;
+    private javax.swing.JTextField CorreoUser;
+    private javax.swing.JButton IniciarSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -212,7 +235,5 @@ public class Login1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

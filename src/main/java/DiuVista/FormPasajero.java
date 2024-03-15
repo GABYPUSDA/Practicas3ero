@@ -41,8 +41,8 @@ public class FormPasajero extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         txtCedula = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnGuarUser = new javax.swing.JButton();
+        BtnBuscarFlete = new javax.swing.JButton();
         txtApellido = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtContrasenia = new javax.swing.JPasswordField();
@@ -53,7 +53,7 @@ public class FormPasajero extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
-        jLabel1.setText("INFORMACION CLIENTE");
+        jLabel1.setText("INFORMACION USUARIO");
 
         jLabel2.setText("Nombres");
 
@@ -63,14 +63,19 @@ public class FormPasajero extends javax.swing.JFrame {
 
         jblContrasenia.setText("Contraseña");
 
-        jButton1.setText("GUARDAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BtnGuarUser.setText("GUARDAR");
+        BtnGuarUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtnGuarUserActionPerformed(evt);
             }
         });
 
-        jButton2.setText("BUSCAR FLETE");
+        BtnBuscarFlete.setText("BUSCAR FLETE");
+        BtnBuscarFlete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBuscarFleteActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Apellido");
 
@@ -103,9 +108,9 @@ public class FormPasajero extends javax.swing.JFrame {
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jButton1)
+                                            .addComponent(BtnGuarUser)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                            .addComponent(jButton2)))))
+                                            .addComponent(BtnBuscarFlete)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,8 +126,8 @@ public class FormPasajero extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jblContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
+                        .addComponent(jblContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(jLabel5)))
                 .addContainerGap())
         );
@@ -157,8 +162,8 @@ public class FormPasajero extends javax.swing.JFrame {
                     .addComponent(txtContrasenia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(BtnGuarUser)
+                    .addComponent(BtnBuscarFlete))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
@@ -176,7 +181,7 @@ public class FormPasajero extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BtnGuarUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuarUserActionPerformed
         Usuario us = new Conductor();
         us.setNombre(txtNombre.getText());
         us.setApellido(txtApellido.getText());
@@ -193,7 +198,13 @@ public class FormPasajero extends javax.swing.JFrame {
         }
         CtlrUsuario ct = new CtlrUsuario();
         ct.CrearUsuario(us);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtnGuarUserActionPerformed
+
+    private void BtnBuscarFleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarFleteActionPerformed
+        ModoUser u = new ModoUser();
+        
+        u.setVisible(true);
+    }//GEN-LAST:event_BtnBuscarFleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,8 +243,8 @@ public class FormPasajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton BtnBuscarFlete;
+    private javax.swing.JButton BtnGuarUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

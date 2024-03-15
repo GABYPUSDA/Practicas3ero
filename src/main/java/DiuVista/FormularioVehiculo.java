@@ -53,6 +53,7 @@ public class FormularioVehiculo extends javax.swing.JFrame {
         txtPlaca = new javax.swing.JTextField();
         txtAnioFab = new javax.swing.JTextField();
         BtnGuardar = new javax.swing.JButton();
+        Regresar = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -159,6 +160,13 @@ public class FormularioVehiculo extends javax.swing.JFrame {
             }
         });
 
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -182,11 +190,14 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
                         .addComponent(BtnGuardar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jLabel8)))
+                        .addContainerGap()
+                        .addComponent(Regresar)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -212,9 +223,11 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                     .addComponent(txtAnioFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel13)
-                .addGap(63, 63, 63)
+                .addGap(61, 61, 61)
                 .addComponent(BtnGuardar)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(Regresar)
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,6 +259,16 @@ public class FormularioVehiculo extends javax.swing.JFrame {
         r.setVisible(true);
         dispose();
     }//GEN-LAST:event_BtnGuardarActionPerformed
+
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+       Login1 loginFrame = new Login1();
+    
+    // Hacer visible la ventana Login1
+    loginFrame.setVisible(true);
+    
+    // Cerrar la ventana actual
+    this.dispose();
+    }//GEN-LAST:event_RegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,6 +308,7 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JComboBox<String> Marca;
+    private javax.swing.JButton Regresar;
     private javax.swing.JComboBox<String> TipoVh;
     private javax.swing.JComboBox<String> TipoVh1;
     private javax.swing.JButton jButton1;

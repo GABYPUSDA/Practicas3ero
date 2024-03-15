@@ -6,9 +6,11 @@ package DiuControlador;
 
 import DIU.Conductor;
 import DIU.Usuario;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -54,6 +56,51 @@ public class CtlrUsuario {
             }
         } catch (Exception e) {
         }
-       
+
     }
+    public boolean IniciarSesionUsuario(Usuario d) {
+        boolean usuarioEncontrado = false;
+        try {
+            String SQL = "CALL IniciarSesionUsuario(?, ?, ?)";
+            CallableStatement statement = conectado.prepareCall(SQL);
+            statement.setString(1, d.getCorreo());
+            statement.setString(2, d.getContrasena());
+            statement.registerOutParameter(3, java.sql.Types.BOOLEAN);
+            statement.execute();
+
+            usuarioEncontrado = statement.getBoolean(3);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesión: " + e.getMessage());
+        } finally {
+            try {
+                if (conectado != null) {
+                    conectado.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + ex.getMessage());
+            }
+        }
+        return usuarioEncontrado;
+    }
+    
+    public boolean verificarTipoUsuario(String correo, String contrasena) {
+        boolean esConductor = false;
+        try {
+            // Llamar al procedimiento almacenado
+            String sql = "{CALL VerificarTipoUsuario(?, ?, ?)}";
+            CallableStatement statement = conectado.prepareCall(sql);
+            statement.setString(1, correo);
+            statement.setString(2, contrasena);
+            statement.registerOutParameter(3, java.sql.Types.BOOLEAN);
+            statement.execute();
+
+            // Obtener el resultado
+            esConductor = statement.getBoolean(3);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return esConductor;
+    }
+    
+    
 }

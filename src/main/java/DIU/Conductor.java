@@ -23,6 +23,7 @@ public class Conductor extends Usuario {
     private String correoElectronico;
     private String celular;
     private String tipoLicencia; 
+    private String contrasena;
 
     public Conductor() {
     }
@@ -36,6 +37,7 @@ public class Conductor extends Usuario {
         this.correoElectronico = correoElectronico;
         this.celular = celular;
         this.tipoLicencia = tipoLicencia;
+        this.contrasena = contrasena;
     }
 
     
@@ -105,6 +107,15 @@ public class Conductor extends Usuario {
         this.tipoLicencia = tipoLicencia;
     }
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    
 
 
     

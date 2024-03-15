@@ -44,7 +44,8 @@ public class CtlrConductor {
                     + "'" + C.getCedula()+ "',"
                     + "'" + C.getCorreoElectronico() + "',"
                     + "'" + C.getCelular() + "',"
-                    + "'" + C.getTipoLicencia()+"')";
+                    + "'" + C.getTipoLicencia()+"')"
+                    + "'" + C.getContrasena()+"')";
             ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
             int res = ejecutar.executeUpdate();
             if (res > 0) {
