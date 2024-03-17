@@ -54,6 +54,7 @@ public class FormularioVehiculo extends javax.swing.JFrame {
         txtAnioFab = new javax.swing.JTextField();
         BtnGuardar = new javax.swing.JButton();
         Regresar = new javax.swing.JButton();
+        Siguiente = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
 
@@ -145,9 +146,9 @@ public class FormularioVehiculo extends javax.swing.JFrame {
 
         jLabel11.setText("Nro de Placa:");
 
-        jLabel12.setText("Año Fabricación:");
+        jLabel12.setText("Año Fabricación 2000-2024:");
 
-        jLabel13.setText("Resolucion de Incremento de Cupo de Compañia:");
+        jLabel13.setText("Tonelaje:");
 
         TipoVh1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Furgon", "Furgon C", "Camion", "Vehiculo especial" }));
 
@@ -167,28 +168,19 @@ public class FormularioVehiculo extends javax.swing.JFrame {
             }
         });
 
+        Siguiente.setText("Siguiente");
+        Siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SiguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAnioFab)
-                            .addComponent(TipoVh1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Marca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtPlaca)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel13))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jLabel8))
@@ -197,8 +189,29 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                         .addComponent(BtnGuardar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(Regresar)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Regresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Siguiente)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Marca, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TipoVh1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAnioFab, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,16 +238,21 @@ public class FormularioVehiculo extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addGap(61, 61, 61)
                 .addComponent(BtnGuardar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(Regresar)
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(Regresar)
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(Siguiente)
+                        .addGap(52, 52, 52))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,11 +265,14 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
+       String placa = txtPlaca.getText();
+       int aniofab = Integer.parseInt(txtAnioFab.getText());
+       
         Vehiculo v = new Vehiculo();
         v.setTipo(TipoVh1.getSelectedItem().toString());
         v.setMarca(Marca.getSelectedItem().toString());
-        v.setPlaca(txtPlaca.getText());
-        v.setAnio(Integer.parseInt(txtAnioFab.getText()));
+        v.setPlaca(placa);
+        v.setAnio(aniofab);
         
         ControlVehiculo cv = new ControlVehiculo();
         cv.CrearVehiculo(v);
@@ -260,6 +281,20 @@ public class FormularioVehiculo extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
+    // Método para validar la placa (letras mayúsculas y números)
+private boolean validarPlaca(String placa) {
+    return placa.matches("[A-Z0-9]+");
+}
+
+// Método para validar el año de fabricación (solo números y dentro del rango 2000-2024)
+private boolean validarAnioFabricacion(String anioFabStr) {
+    if (!anioFabStr.matches("\\d{4}")) { // Asegurar que sean 4 dígitos
+        return false;
+    }
+
+    int anioFab = Integer.parseInt(anioFabStr);
+    return anioFab >= 2000 && anioFab <= 2024;
+}
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
        Login1 loginFrame = new Login1();
     
@@ -269,6 +304,12 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     // Cerrar la ventana actual
     this.dispose();
     }//GEN-LAST:event_RegresarActionPerformed
+
+    private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
+        Fletes1 f = new Fletes1();
+        f.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_SiguienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,6 +350,7 @@ public class FormularioVehiculo extends javax.swing.JFrame {
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JComboBox<String> Marca;
     private javax.swing.JButton Regresar;
+    private javax.swing.JButton Siguiente;
     private javax.swing.JComboBox<String> TipoVh;
     private javax.swing.JComboBox<String> TipoVh1;
     private javax.swing.JButton jButton1;

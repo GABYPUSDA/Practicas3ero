@@ -175,14 +175,24 @@ public class Login1 extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnRegistrarseActionPerformed
 
     private void IniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarSesionActionPerformed
-        Usuario user =new Usuario ();
-        user.setCorreo(CorreoUser.getText());
-        user.setContrasena(ContraseUser.getText());
-        
-        CtlrUsuario ctlrUsuario = new CtlrUsuario();
-    
+  
+         // Obtener el correo y la contraseña ingresados por el usuario
+         String correo = CorreoUser.getText();
+         String contrasena = ContraseUser.getText();
+        //VERIFICA SI LOS CAMPOS ESTA VACIO
+        if (correo.isEmpty() || contrasena.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar correo y contraseña para iniciar sesión", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+        //CREA EL OBJETO
+        Usuario user = new Usuario();
+    user.setCorreo(correo);
+    user.setContrasena(contrasena);
+
     // Iniciar sesión y verificar si el usuario fue autenticado correctamente
+       CtlrUsuario ctlrUsuario = new CtlrUsuario();
        boolean sesionIniciada = ctlrUsuario.IniciarSesionUsuario(user);
+     
       
      
         
