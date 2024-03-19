@@ -17,6 +17,7 @@ DefaultTableModel modelo= new DefaultTableModel();
      */
     public Fletes1() {
         initComponents();
+        setModelo();
     }
     public void setModelo() {
         String[] cabecera = {"Nombre", "Placa", "Año", "Marca", "Color", "Valor", "Multas"};
