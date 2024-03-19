@@ -5,7 +5,10 @@
 package DiuVista;
 
 import DIU.Conductor;
+import DIU.Usuario;
 import DiuControlador.CtlrConductor;
+import DiuControlador.CtlrUsuario;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import javax.swing.JOptionPane;
@@ -16,7 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class FormConductor extends javax.swing.JFrame {
 
-    Conductor  c = new Conductor();
+    Usuario c = new Usuario();
+
     public FormConductor() {
         initComponents();
         c.mes(mes);
@@ -122,20 +126,15 @@ public class FormConductor extends javax.swing.JFrame {
 
         jLabel12.setText("Contraseña:");
 
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\DELL\\OneDrive\\Documentos\\NetBeansProjects\\Transcentenario\\src\\main\\java\\resources\\Sello.jpg")); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,19 +169,19 @@ public class FormConductor extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dia, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(contrasena)))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(54, 54, 54)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -255,83 +254,86 @@ public class FormConductor extends javax.swing.JFrame {
     }//GEN-LAST:event_añoActionPerformed
 
     // Método para validar el nombre (solo letras)
-private boolean validarNombre(String nombre) {
-    return nombre.matches("[a-zA-Z ]+");
-}
+    private boolean validarNombre(String nombre) {
+        return nombre.matches("[a-zA-Z ]+");
+    }
 
 // Método para validar el apellido (solo letras)
-private boolean validarApellido(String apellido) {
-    return apellido.matches("[a-zA-Z ]+");
-}
+    private boolean validarApellido(String apellido) {
+        return apellido.matches("[a-zA-Z ]+");
+    }
 
 // Método para validar la cédula (10 números)
-private boolean validarCedula(String cedula) {
-    return cedula.matches("\\d{10}");
-}
+    private boolean validarCedula(String cedula) {
+        return cedula.matches("\\d{10}");
+    }
 
 // Método para validar el correo electrónico (formato válido)
-private boolean validarCorreo(String correo) {
-    return correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
-}
+    private boolean validarCorreo(String correo) {
+        return correo.matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+    }
 
 // Método para validar el número de celular (10 números)
-private boolean validarCelular(String celular) {
-    return celular.matches("\\d{10}");
-}
+    private boolean validarCelular(String celular) {
+        return celular.matches("\\d{10}");
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String cedula = txtCedula.getText();
         String correo = txtCorreo.getText();
         String celular = txtCelular.getText();
-        
-        // Validar nombre
-    if (!validarNombre(nombre)) {
-        JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    // Validar apellido
-    if (!validarApellido(apellido)) {
-        JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    // Validar cédula
-    if (!validarCedula(cedula)) {
-        JOptionPane.showMessageDialog(this, "La cédula debe contener exactamente 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    // Validar correo electrónico
-    if (!validarCorreo(correo)) {
-        JOptionPane.showMessageDialog(this, "El correo electrónico ingresado no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    // Validar número de celular
-    if (!validarCelular(celular)) {
-        JOptionPane.showMessageDialog(this, "El número de celular debe contener exactamente 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-        
-        Conductor c = new Conductor();
-        c.setNombre(nombre);
-        c.setApellido(apellido);
-        int anio = Integer.parseInt( año.getSelectedItem().toString().trim());
-        int mes = Integer.parseInt( this.mes.getSelectedItem().toString().trim());
-        int dia = Integer.parseInt( this.dia.getSelectedItem().toString().trim());
-        LocalDate anios = LocalDate.of(anio, mes, dia);
-        c.setFechaNacimiento(anios);
-        c.setCedula(cedula);
-        c.setCorreoElectronico(correo);
-        c.setCelular(celular);
-        c.setTipoLicencia(cbTipo.getSelectedItem().toString());
-        c.setContrasena(contrasena.getText());
 
-        CtlrConductor ct = new CtlrConductor();
-        ct.CrearConductor(c);
+        // Validar nombre
+        if (!validarNombre(nombre)) {
+            JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar apellido
+        if (!validarApellido(apellido)) {
+            JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar cédula
+        if (!validarCedula(cedula)) {
+            JOptionPane.showMessageDialog(this, "La cédula debe contener exactamente 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar correo electrónico
+        if (!validarCorreo(correo)) {
+            JOptionPane.showMessageDialog(this, "El correo electrónico ingresado no es válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar número de celular
+        if (!validarCelular(celular)) {
+            JOptionPane.showMessageDialog(this, "El número de celular debe contener exactamente 10 números.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int year = Integer.parseInt((String) año.getSelectedItem());
+        int month = Integer.parseInt((String) mes.getSelectedItem());
+        int day = Integer.parseInt((String) dia.getSelectedItem());
+        Date fechaNacimiento = intToDate(year, month, day);
+        Conductor c = new Conductor();
+        Usuario u = new Usuario();
+        u.setNombre(nombre);
+        u.setApellido(apellido);
+        u.setFechaNacimiento(fechaNacimiento);
+        u.setCedula(cedula);
+        u.setRol("conductor");
+        c.setTipoLicencia(cbTipo.getSelectedItem().toString());
+        System.out.println(cbTipo.getSelectedItem().toString());
+        c.setTelefono(celular);
+        u.setCorreo(correo);
+        u.setContrasenia(contrasena.getText());
         
+        CtlrUsuario ct = new CtlrUsuario();
+        ct.CrearUsuario(u, c);
+
         FormularioVehiculo fv = new FormularioVehiculo();
         fv.setVisible(true);
         dispose();
@@ -340,6 +342,14 @@ private boolean validarCelular(String celular) {
     private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbTipoActionPerformed
+
+    public static Date intToDate(int year, int month, int day) {
+        // Crear un objeto LocalDate
+        LocalDate fechaNacimiento = LocalDate.of(year, month, day);
+
+        // Convertir LocalDate a java.sql.Date
+        return Date.valueOf(fechaNacimiento);
+    }
 
     /**
      * @param args the command line arguments
@@ -379,7 +389,7 @@ private boolean validarCelular(String celular) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> año;
-    private javax.swing.JComboBox<String> cbTipo;
+    public static javax.swing.JComboBox<String> cbTipo;
     private javax.swing.JPasswordField contrasena;
     private javax.swing.JComboBox<String> dia;
     private javax.swing.JButton jButton1;

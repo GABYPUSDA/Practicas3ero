@@ -36,7 +36,7 @@ public class CtlrConductor {
         this.conductor = conductor;
     }
 
-    public void CrearConductor(Conductor C) {
+    /*public void CrearConductor(Conductor C) {
         try {
             String SQL = "call GuardarConductor('"
                     + C.getNombre() + "', '"
@@ -120,6 +120,8 @@ public class CtlrConductor {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al eliminar el conductor: " + e.getMessage());
         }
-    }
+    } 
+
+    */
 
 }
