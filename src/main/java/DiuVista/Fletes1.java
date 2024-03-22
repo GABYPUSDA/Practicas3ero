@@ -1,8 +1,12 @@
-+/*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package DiuVista;
+
+import DIU.Fletes;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -11,20 +15,25 @@ import javax.swing.table.DefaultTableModel;
  * @author DELL
  */
 public class Fletes1 extends javax.swing.JFrame {
-DefaultTableModel modelo= new DefaultTableModel();
+// DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form Fletes1
      */
+    public String LugarRecogida, Destino, FechaHora, Descripcion, Tarifa, estado;
+    ArrayList<Fletes> fletes = new ArrayList<>();
+    DefaultTableModel modelo = new DefaultTableModel();
+    
     public Fletes1() {
         initComponents();
         setModelo();
     }
     public void setModelo() {
-        String[] cabecera = {"Nombre", "Placa", "Año", "Marca", "Color", "Valor", "Multas"};
+        String[] cabecera = {"Lugar Recogida", "Destino", "FechaHora", "Descripcion", "Tarifa", "estado"};
         modelo.setColumnIdentifiers(cabecera);
         Tabla.setModel(modelo);
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,10 +43,13 @@ DefaultTableModel modelo= new DefaultTableModel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Elejir un flete");
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -57,12 +69,20 @@ DefaultTableModel modelo= new DefaultTableModel();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 42, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 109, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,6 +125,7 @@ DefaultTableModel modelo= new DefaultTableModel();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

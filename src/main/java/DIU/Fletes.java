@@ -13,19 +13,22 @@ import java.sql.Date;
 public class Fletes {
     private String LugarRecogida;
     private String Destino;
-    private String FechaHora;
+    private Date FechaHora;
     private String Descripcionflete;
     private int tarifa;
+    private String estado;
 
     public Fletes() {
     }
 
-    public Fletes(String LugarRecogida, String Destino, String FechaHora, String Descripcionflete, int tarifa) {
+    public Fletes(String LugarRecogida, String Destino, Date FechaHora, String Descripcionflete, int tarifa) {
         this.LugarRecogida = LugarRecogida;
         this.Destino = Destino;
         this.FechaHora = FechaHora;
         this.Descripcionflete = Descripcionflete;
         this.tarifa = tarifa;
+        this.estado = estado;
+        
     }
 
     public String getLugarRecogida() {
@@ -44,11 +47,11 @@ public class Fletes {
         this.Destino = Destino;
     }
 
-    public String getFechaHora() {
+    public Date getFechaHora() {
         return FechaHora;
     }
 
-    public void setFechaHora(String FechaHora) {
+    public void setFechaHora(Date FechaHora) {
         this.FechaHora = FechaHora;
     }
 
@@ -66,6 +69,14 @@ public class Fletes {
 
     public void setTarifa(int tarifa) {
         this.tarifa = tarifa;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
     
