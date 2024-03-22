@@ -4,8 +4,13 @@
  */
 package DiuVista;
 
+import DIU.Fletes;
+import DiuControlador.ControladorFlete;
+import static DiuVista.FormConductor.intToDate;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -13,11 +18,13 @@ import java.time.LocalDate;
  */
 public class ModoUser extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ModoUser
-     */
+    Fletes f = new Fletes();
+
     public ModoUser() {
         initComponents();
+        f.mes(mes);
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -65,7 +72,6 @@ public class ModoUser extends javax.swing.JFrame {
 
         anio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2024", "2025" }));
 
-        mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
         mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mesActionPerformed(evt);
@@ -74,30 +80,28 @@ public class ModoUser extends javax.swing.JFrame {
 
         jLabel5.setText("Descripcion del Flete:");
 
-        dia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "31", "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1" }));
-
-        descripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descripcionActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("¿Cual es tu tarifa?");
 
         Solicitud.setBackground(new java.awt.Color(0, 102, 255));
         Solicitud.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         Solicitud.setText("ENVIAR SOLICITUD");
+        Solicitud.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Solicitud.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SolicitudMouseClicked(evt);
+            }
+        });
         Solicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SolicitudActionPerformed(evt);
             }
         });
 
-        recogida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ibarra", "otavalo", "cotacachi", "antonio ante", "pimampiro", "urcuqui" }));
+        recogida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ibarra", "Otavalo", "Cotacachi", "Antonio Ante", "Pimampiro", "Urcuqui" }));
 
-        destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ibarra", "otavalo", "pimampiro", "antonio ante", "urcuqui", "cotacachi" }));
+        destino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ibarra", "Otavalo", "Cotacachi", "Antonio Ante", "Pimampiro", "Urcuqui" }));
 
-        hora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "08:00:00", "09:00:00", "10:00:00", "11:00:00", "12:00:00", "13:00:00", "14:00:00", "15:00:00", "16:00:00", "17:00:00", "18:00:00" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -168,9 +172,9 @@ public class ModoUser extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(tarifa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(Solicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -179,7 +183,7 @@ public class ModoUser extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(104, 104, 104)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,18 +217,18 @@ public class ModoUser extends javax.swing.JFrame {
 
     private void SolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitudActionPerformed
         //obtener datos
-        String lugarRecogida = (String) recogida.getSelectedItem();
+       /* String lugarRecogida = (String) recogida.getSelectedItem();
         String destino1 = (String) destino.getSelectedItem();
-         int year = Integer.parseInt((String) anio.getSelectedItem());
+        int year = Integer.parseInt((String) anio.getSelectedItem());
         int month = Integer.parseInt((String) mes.getSelectedItem());
         int day = Integer.parseInt((String) dia.getSelectedItem());
         Date fechaNacimiento = intToDate(year, month, day);
-        int tarifa1 =Integer.parseInt(tarifa.getText());
-       
-         // Crear instancia de Fletes1 y establecer los datos del flete
-    Fletes1 fletes1Frame = new Fletes1();
-   
-        
+        int tarifa1 = Integer.parseInt(tarifa.getText());
+
+        // Crear instancia de Fletes1 y establecer los datos del flete
+        Fletes1 fletes1Frame = new Fletes1();*/
+
+
     }//GEN-LAST:event_SolicitudActionPerformed
 
     public static Date intToDate(int year, int month, int day) {
@@ -234,15 +238,33 @@ public class ModoUser extends javax.swing.JFrame {
         // Convertir LocalDate a java.sql.Date
         return Date.valueOf(fechaNacimiento);
     }
-    
-    
+
+
     private void mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesActionPerformed
-        // TODO add your handling code here:
+        f.dia(mes, dia);
     }//GEN-LAST:event_mesActionPerformed
 
-    private void descripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descripcionActionPerformed
+    private void SolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolicitudMouseClicked
+
+        Fletes f = new Fletes();
+        f.setLugarRecogida(recogida.getSelectedItem().toString());
+        f.setDestino(destino.getSelectedItem().toString());
+        int year = Integer.parseInt((String) anio.getSelectedItem());
+        int month = Integer.parseInt((String) mes.getSelectedItem());
+        int day = Integer.parseInt((String) dia.getSelectedItem());
+        int hour = Integer.parseInt(this.hora.getSelectedItem().toString().split(":")[0]); // Obtener la hora
+        int minute = Integer.parseInt(this.hora.getSelectedItem().toString().split(":")[1]); // Obtener los minutos
+        LocalDateTime fechaHora = LocalDateTime.of(year, month, day, hour, minute);
+
+        // Convertir LocalDateTime a java.sql.Date
+        Date fechaHoraSql = java.sql.Date.valueOf(fechaHora.toLocalDate());
+
+        f.setFechaHora(fechaHoraSql); // Establecer la fecha y hora en formato Date
+        f.setDescripcionflete(descripcion.getText());
+        f.setTarifa(Integer.parseInt(tarifa.getText()));
+        ControladorFlete ft = new ControladorFlete();
+        ft.InsertarFletes(f);
+    }//GEN-LAST:event_SolicitudMouseClicked
 
     /**
      * @param args the command line arguments

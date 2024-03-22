@@ -5,6 +5,7 @@
 package DIU;
 
 import java.sql.Date;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -21,14 +22,13 @@ public class Fletes {
     public Fletes() {
     }
 
-    public Fletes(String LugarRecogida, String Destino, Date FechaHora, String Descripcionflete, int tarifa) {
+    public Fletes(String LugarRecogida, String Destino, Date FechaHora, String Descripcionflete, int tarifa, String estado) {
         this.LugarRecogida = LugarRecogida;
         this.Destino = Destino;
         this.FechaHora = FechaHora;
         this.Descripcionflete = Descripcionflete;
         this.tarifa = tarifa;
         this.estado = estado;
-        
     }
 
     public String getLugarRecogida() {
@@ -55,6 +55,7 @@ public class Fletes {
         this.FechaHora = FechaHora;
     }
 
+
     public String getDescripcionflete() {
         return Descripcionflete;
     }
@@ -79,6 +80,122 @@ public class Fletes {
         this.estado = estado;
     }
     
-    
+    public static void mes(JComboBox cbMes) {
+
+        cbMes.addItem("1");
+        cbMes.addItem("2");
+        cbMes.addItem("3");
+        cbMes.addItem("4");
+        cbMes.addItem("5");
+        cbMes.addItem("6");
+        cbMes.addItem("7");
+        cbMes.addItem("8");
+        cbMes.addItem("9");
+        cbMes.addItem("10");
+        cbMes.addItem("11");
+        cbMes.addItem("12");
+
+    }
+
+    public static void dia(JComboBox cbMes, JComboBox cbDias) {
+        cbDias.removeAllItems();
+        String mesSeleccionado = cbMes.getSelectedItem().toString();
+        if (mesSeleccionado.equals("1") || mesSeleccionado.equals("3") || mesSeleccionado.equals("5")
+                || mesSeleccionado.equals("7") || mesSeleccionado.equals("8") || mesSeleccionado.equals("10")
+                || mesSeleccionado.equals("12")) {
+            cbDias.addItem("1");
+            cbDias.addItem("2");
+            cbDias.addItem("3");
+            cbDias.addItem("4");
+            cbDias.addItem("5");
+            cbDias.addItem("6");
+            cbDias.addItem("7");
+            cbDias.addItem("8");
+            cbDias.addItem("9");
+            cbDias.addItem("10");
+            cbDias.addItem("11");
+            cbDias.addItem("12");
+            cbDias.addItem("13");
+            cbDias.addItem("14");
+            cbDias.addItem("15");
+            cbDias.addItem("16");
+            cbDias.addItem("17");
+            cbDias.addItem("18");
+            cbDias.addItem("19");
+            cbDias.addItem("20");
+            cbDias.addItem("21");
+            cbDias.addItem("22");
+            cbDias.addItem("23");
+            cbDias.addItem("24");
+            cbDias.addItem("25");
+            cbDias.addItem("26");
+            cbDias.addItem("27");
+            cbDias.addItem("28");
+            cbDias.addItem("29");
+            cbDias.addItem("30");
+            cbDias.addItem("31");
+
+        } else if (mesSeleccionado.equals("2")) {
+            cbDias.addItem("1");
+            cbDias.addItem("2");
+            cbDias.addItem("3");
+            cbDias.addItem("4");
+            cbDias.addItem("5");
+            cbDias.addItem("6");
+            cbDias.addItem("7");
+            cbDias.addItem("8");
+            cbDias.addItem("9");
+            cbDias.addItem("10");
+            cbDias.addItem("11");
+            cbDias.addItem("12");
+            cbDias.addItem("13");
+            cbDias.addItem("14");
+            cbDias.addItem("15");
+            cbDias.addItem("16");
+            cbDias.addItem("17");
+            cbDias.addItem("18");
+            cbDias.addItem("19");
+            cbDias.addItem("20");
+            cbDias.addItem("21");
+            cbDias.addItem("22");
+            cbDias.addItem("23");
+            cbDias.addItem("24");
+            cbDias.addItem("25");
+            cbDias.addItem("26");
+            cbDias.addItem("27");
+            cbDias.addItem("28");
+        } else {
+            cbDias.addItem("1");
+            cbDias.addItem("2");
+            cbDias.addItem("3");
+            cbDias.addItem("4");
+            cbDias.addItem("5");
+            cbDias.addItem("6");
+            cbDias.addItem("7");
+            cbDias.addItem("8");
+            cbDias.addItem("9");
+            cbDias.addItem("10");
+            cbDias.addItem("11");
+            cbDias.addItem("12");
+            cbDias.addItem("13");
+            cbDias.addItem("14");
+            cbDias.addItem("15");
+            cbDias.addItem("16");
+            cbDias.addItem("17");
+            cbDias.addItem("18");
+            cbDias.addItem("19");
+            cbDias.addItem("20");
+            cbDias.addItem("21");
+            cbDias.addItem("22");
+            cbDias.addItem("23");
+            cbDias.addItem("24");
+            cbDias.addItem("25");
+            cbDias.addItem("26");
+            cbDias.addItem("27");
+            cbDias.addItem("28");
+            cbDias.addItem("29");
+            cbDias.addItem("30");
+        }
+    }
     
 }

@@ -10,13 +10,15 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 /**
  *
  * @author DELL
  */
 public class ControladorFlete {
-        private Fletes fletes;
+
+    private Fletes fletes;
     ConexionBDD conectar = new ConexionBDD();
     Connection conectado = (Connection) conectar.conectar();
     PreparedStatement ejecutar;
@@ -36,25 +38,25 @@ public class ControladorFlete {
     public void setFletes(Fletes fletes) {
         this.fletes = fletes;
     }
-    
-    public void InsertarFletes (Fletes f){
+
+    public void InsertarFletes(Fletes f) {
         try {
-            String sql = "CALL InsertarFletes(?, ?, ?, ?)";
-        CallableStatement statement = conectado.prepareCall(sql);
-        
-        // Establecer los parámetros del procedimiento almacenado
-        statement.setString(1, f.getLugarRecogida());
-        statement.setString(2, f.getDestino());
-        statement.setInt(0, f.getTarifa());
-        
-        // Ejecutar el procedimiento almacenado
-        int res = statement.executeUpdate();
+            String sql = "CALL InsertarFlete(?, ?, ?, ?, ?)";
+            CallableStatement statement = conectado.prepareCall(sql);
+
+            // Establecer los parámetros del procedimiento almacenado
+            statement.setString(1, f.getLugarRecogida());
+            statement.setString(2, f.getDestino());
+            statement.setDate(3, f.getFechaHora());
+            statement.setString(4, f.getDescripcionflete());
+            statement.setInt(5, f.getTarifa());
+
+            // Ejecutar el procedimiento almacenado
+            int res = statement.executeUpdate();
         } catch (Exception e) {
-            
-            
+            // Manejar la excepción aquí
+            e.printStackTrace();
         }
-        
     }
-    
-    
+
 }
