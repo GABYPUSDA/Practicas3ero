@@ -264,6 +264,13 @@ public class ModoUser extends javax.swing.JFrame {
         f.setTarifa(Integer.parseInt(tarifa.getText()));
         ControladorFlete ft = new ControladorFlete();
         ft.InsertarFletes(f);
+        
+        
+        // Crear una instancia de Fletes1 y pasar los datos
+    Fletes1 fletesFrame = new Fletes1();
+    fletesFrame.agregarFlete(f);
+    fletesFrame.setVisible(true); // Mostrar la ventana de Fletes1
+
     }//GEN-LAST:event_SolicitudMouseClicked
 
     /**

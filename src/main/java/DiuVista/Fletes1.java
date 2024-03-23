@@ -28,9 +28,22 @@ public class Fletes1 extends javax.swing.JFrame {
         setModelo();
     }
     public void setModelo() {
-        String[] cabecera = {"Lugar Recogida", "Destino", "FechaHora", "Descripcion", "Tarifa", "estado"};
+        String[] cabecera = {"id","Lugar Recogida", "Destino", "FechaHora", "Descripcion", "Tarifa", "estado"};
         modelo.setColumnIdentifiers(cabecera);
         Tabla.setModel(modelo);
+    }
+    
+    public void agregarFlete(Fletes f) {
+        // Agregar los datos del flete a la tabla
+        modelo.addRow(new Object[]{
+            f.getId(),
+            f.getLugarRecogida(),
+            f.getDestino(),
+            f.getFechaHora(),
+            f.getDescripcionflete(),
+            f.getTarifa(),
+            "disponible" // Aquí podrías establecer algún estado predeterminado si lo deseas
+        });
     }
 
     

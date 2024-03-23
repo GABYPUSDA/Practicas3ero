@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
  * @author DELL
  */
 public class Fletes {
+    private int id;
     private String LugarRecogida;
     private String Destino;
     private Date FechaHora;
@@ -22,7 +23,8 @@ public class Fletes {
     public Fletes() {
     }
 
-    public Fletes(String LugarRecogida, String Destino, Date FechaHora, String Descripcionflete, int tarifa, String estado) {
+    public Fletes(int id, String LugarRecogida, String Destino, Date FechaHora, String Descripcionflete, int tarifa, String estado) {
+        this.id =id;
         this.LugarRecogida = LugarRecogida;
         this.Destino = Destino;
         this.FechaHora = FechaHora;
@@ -31,6 +33,15 @@ public class Fletes {
         this.estado = estado;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getLugarRecogida() {
         return LugarRecogida;
     }

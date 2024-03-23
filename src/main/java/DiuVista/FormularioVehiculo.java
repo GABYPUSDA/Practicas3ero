@@ -4,8 +4,10 @@
  */
 package DiuVista;
 
+import DIU.Fletes;
 import DIU.Vehiculo;
 import DiuControlador.ControlVehiculo;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,11 +15,13 @@ import DiuControlador.ControlVehiculo;
  */
 public class FormularioVehiculo extends javax.swing.JFrame {
 
+    private Fletes1 fletes1;
     /**
      * Creates new form FormularioVehiculo
      */
     public FormularioVehiculo() {
         initComponents();
+        this.fletes1 = fletes1;
     }
 
     /**
@@ -306,9 +310,8 @@ private boolean validarAnioFabricacion(String anioFabStr) {
     }//GEN-LAST:event_RegresarActionPerformed
 
     private void SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SiguienteActionPerformed
-        Fletes1 f = new Fletes1();
-        f.setVisible(true);
-        this.dispose();
+
+        
     }//GEN-LAST:event_SiguienteActionPerformed
 
     /**
@@ -374,4 +377,8 @@ private boolean validarAnioFabricacion(String anioFabStr) {
     private javax.swing.JTextField txtAnioFab;
     private javax.swing.JTextField txtPlaca;
     // End of variables declaration//GEN-END:variables
+
+    private ArrayList<Fletes> obtenerListaFletes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
