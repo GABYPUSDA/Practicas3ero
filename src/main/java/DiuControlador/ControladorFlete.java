@@ -10,7 +10,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -57,6 +59,28 @@ public class ControladorFlete {
             // Manejar la excepción aquí
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Object[]> obtenerFlete() {
+        ArrayList<Object[]> fletes = new ArrayList<>();
+        try {
+            String SQL = "call bddtrascentenario.obtener_fletes();";
+            ejecutar = (PreparedStatement) conectado.prepareCall(SQL);
+            ResultSet res = ejecutar.executeQuery();
+
+            while (res.next()) {
+                Object[] fila = new Object[7]; // Ajusta el tamaño del arreglo a 7 para incluir el estado
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = res.getObject(i + 1);
+                }
+                fletes.add(fila);
+            }
+            res.close();
+            return fletes;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
 }
