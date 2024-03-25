@@ -41,6 +41,7 @@ public class Fletes {
         this.id = id;
     }
 
+   
     
     public String getLugarRecogida() {
         return LugarRecogida;

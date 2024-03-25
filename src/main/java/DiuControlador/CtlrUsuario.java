@@ -10,6 +10,7 @@ import DIU.Usuario;
 import DiuVista.Fletes1;
 import DiuVista.FormConductor;
 import DiuVista.Login1;
+import DiuVista.MenuConductor;
 import DiuVista.ModoUser;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -111,7 +112,7 @@ public class CtlrUsuario {
 
                 // Redirigir según el rol
                 if (rol.equals("conductor")) {
-                    Fletes1 f1 = new Fletes1();
+                    MenuConductor f1 = new MenuConductor();
                     f1.setVisible(true);
                 } else {
                     ModoUser mu = new ModoUser();

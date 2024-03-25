@@ -5,12 +5,14 @@
 package DiuVista;
 
 import DIU.Fletes;
+import DIU.Main;
 import DiuControlador.ControladorFlete;
 import static DiuVista.FormConductor.intToDate;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -262,6 +264,10 @@ public class ModoUser extends javax.swing.JFrame {
         f.setFechaHora(fechaHoraSql); // Establecer la fecha y hora en formato Date
         f.setDescripcionflete(descripcion.getText());
         f.setTarifa(Integer.parseInt(tarifa.getText()));
+        f.setId(Main.fletes.size());
+    
+        Main.fletes.add(f);
+        JOptionPane.showMessageDialog(this, "persona creada con el id: " + f.getId());
         ControladorFlete ft = new ControladorFlete();
         ft.InsertarFletes(f);
         
@@ -269,7 +275,9 @@ public class ModoUser extends javax.swing.JFrame {
         // Crear una instancia de Fletes1 y pasar los datos
     Fletes1 fletesFrame = new Fletes1();
     fletesFrame.agregarFlete(f);
-    fletesFrame.setVisible(true); // Mostrar la ventana de Fletes1
+    
+    
+  
 
     }//GEN-LAST:event_SolicitudMouseClicked
 

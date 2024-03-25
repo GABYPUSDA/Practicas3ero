@@ -5,10 +5,11 @@
 package DiuVista;
 
 import DIU.Fletes;
+import DIU.Main;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,21 +21,24 @@ public class Fletes1 extends javax.swing.JFrame {
      * Creates new form Fletes1
      */
     public String LugarRecogida, Destino, FechaHora, Descripcion, Tarifa, estado;
-    ArrayList<Fletes> fletes = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
     
     public Fletes1() {
         initComponents();
         setModelo();
+
     }
-    public void setModelo() {
-        String[] cabecera = {"id","Lugar Recogida", "Destino", "FechaHora", "Descripcion", "Tarifa", "estado"};
+    public void setModelo(){
+        String [] cabecera = {"id","LugarRecogida","Destino", "FechaHora","Descripcion", "Tarifa", "Estado"};
         modelo.setColumnIdentifiers(cabecera);
-        Tabla.setModel(modelo);
+        Jtabla.setModel(modelo);
     }
+
     
+  
     public void agregarFlete(Fletes f) {
         // Agregar los datos del flete a la tabla
+       
         modelo.addRow(new Object[]{
             f.getId(),
             f.getLugarRecogida(),
@@ -56,15 +60,20 @@ public class Fletes1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        BtnSeleccionarFlete = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla = new javax.swing.JTable();
+        Jtabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Elejir un flete");
+        BtnSeleccionarFlete.setText("Elejir un flete");
+        BtnSeleccionarFlete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSeleccionarFleteActionPerformed(evt);
+            }
+        });
 
-        Tabla.setModel(new javax.swing.table.DefaultTableModel(
+        Jtabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,7 +84,7 @@ public class Fletes1 extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(Tabla);
+        jScrollPane1.setViewportView(Jtabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,23 +92,29 @@ public class Fletes1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(31, 31, 31))
+                .addGap(28, 28, 28)
+                .addComponent(BtnSeleccionarFlete)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 109, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(BtnSeleccionarFlete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnSeleccionarFleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarFleteActionPerformed
+        
+        int elejirFlete = Jtabla.getSelectedRow();
+        
+    }//GEN-LAST:event_BtnSeleccionarFleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,8 +152,8 @@ public class Fletes1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tabla;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtnSeleccionarFlete;
+    private javax.swing.JTable Jtabla;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
