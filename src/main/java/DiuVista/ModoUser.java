@@ -219,7 +219,7 @@ public class ModoUser extends javax.swing.JFrame {
 
     private void SolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitudActionPerformed
         //obtener datos
-       /* String lugarRecogida = (String) recogida.getSelectedItem();
+        /* String lugarRecogida = (String) recogida.getSelectedItem();
         String destino1 = (String) destino.getSelectedItem();
         int year = Integer.parseInt((String) anio.getSelectedItem());
         int month = Integer.parseInt((String) mes.getSelectedItem());
@@ -247,7 +247,24 @@ public class ModoUser extends javax.swing.JFrame {
     }//GEN-LAST:event_mesActionPerformed
 
     private void SolicitudMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SolicitudMouseClicked
+        Fletes f = new Fletes();
+        f.setLugarRecogida(recogida.getSelectedItem().toString());
+        f.setDestino(destino.getSelectedItem().toString());
+        int year = Integer.parseInt((String) anio.getSelectedItem());
+        int month = Integer.parseInt((String) mes.getSelectedItem());
+        int day = Integer.parseInt((String) dia.getSelectedItem());
+        int hour = Integer.parseInt(this.hora.getSelectedItem().toString().split(":")[0]); // Obtener la hora
+        int minute = Integer.parseInt(this.hora.getSelectedItem().toString().split(":")[1]); // Obtener los minutos
+        LocalDateTime fechaHora = LocalDateTime.of(year, month, day, hour, minute);
 
+        // Convertir LocalDateTime a java.sql.Date
+        Date fechaHoraSql = java.sql.Date.valueOf(fechaHora.toLocalDate());
+
+        f.setFechaHora(fechaHoraSql); // Establecer la fecha y hora en formato Date
+        f.setDescripcionflete(descripcion.getText());
+        f.setTarifa(Integer.parseInt(tarifa.getText()));
+        ControladorFlete ft = new ControladorFlete();
+        ft.InsertarFletes(f);
     }//GEN-LAST:event_SolicitudMouseClicked
 
     /**
