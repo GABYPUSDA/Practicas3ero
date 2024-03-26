@@ -52,6 +52,7 @@ public class ControladorFlete {
             statement.setDate(3, f.getFechaHora());
             statement.setString(4, f.getDescripcionflete());
             statement.setInt(5, f.getTarifa());
+            statement.setString(6, f.getEstado());
 
             // Ejecutar el procedimiento almacenado
             int res = statement.executeUpdate();
