@@ -4,6 +4,10 @@
  */
 package DiuVista;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author DELL
@@ -109,11 +113,18 @@ public class MenuConductor extends javax.swing.JFrame {
     private void BtnFleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFleteActionPerformed
         Fletes1 f = new Fletes1();
         f.setVisible(true);
+        
     }//GEN-LAST:event_BtnFleteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Historial h = new Historial();
+        Historial h = null;
+        try {
+            h = new Historial();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuConductor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         h.setVisible(true);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

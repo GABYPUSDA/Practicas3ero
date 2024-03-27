@@ -4,7 +4,13 @@ package DiuVista;
 import DIU.Fletes;
 import DIU.Main;
 import DiuControlador.ControladorFlete;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -123,9 +129,45 @@ public class Fletes1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSeleccionarFleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSeleccionarFleteActionPerformed
-        
-        int elejirFlete = tbFletes.getSelectedRow();
-        
+   // Obtener la fila seleccionada
+    int filaSeleccionada = tbFletes.getSelectedRow();
+
+    // Verificar si se ha seleccionado una fila
+    if (filaSeleccionada != -1) {
+        // Obtener el ID del flete seleccionado
+        int idFlete = (int) tbFletes.getValueAt(filaSeleccionada, 0); // Suponiendo que el ID está en la primera columna
+
+        // Obtener el correo del conductor
+        String correoConductor = Login1.getCorreoUsuario();
+
+        // Conexión a la base de datos
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bddtrascentenario", "root", "1234")) {
+            // Actualizar el estado y el correo del conductor del flete en la base de datos
+            String query = "UPDATE fletes SET estado = 'No disponible', conductor = ? WHERE id_viaje = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, correoConductor);
+                preparedStatement.setInt(2, idFlete);
+                
+                // Ejecutar la actualización
+                int filasActualizadas = preparedStatement.executeUpdate();
+                if (filasActualizadas > 0) {
+                    // Si se actualizó correctamente, recargar la tabla
+                    cargarTabla();
+                    JOptionPane.showConfirmDialog(rootPane, "se selecciono correctamente");
+                } else {
+                    // Si no se actualizó ninguna fila, mostrar un mensaje de error
+                    JOptionPane.showMessageDialog(this, "No se pudo actualizar el estado del flete", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (SQLException e) {
+            // Manejar cualquier excepción de SQL
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error de base de datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Si no se ha seleccionado ninguna fila, mostrar un mensaje de advertencia
+        JOptionPane.showMessageDialog(this, "Por favor, seleccione un flete", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_BtnSeleccionarFleteActionPerformed
 
     /**

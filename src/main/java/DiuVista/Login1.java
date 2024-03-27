@@ -6,6 +6,7 @@ package DiuVista;
 
 import DIU.Usuario;
 import DiuControlador.CtlrUsuario;
+import com.mysql.cj.CoreSession;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author DELL
  */
 public class Login1 extends javax.swing.JFrame {
-
+private static String correoUsuario;
     /**
      * Creates new form Login1
      */
@@ -236,22 +237,28 @@ public class Login1 extends javax.swing.JFrame {
         // Obtener el correo y la contraseña ingresados por el usuario
         String correo = CorreoUser.getText();
         String contrasena = ContraseUser.getText();
+
         //VERIFICA SI LOS CAMPOS ESTA VACIO
         if (correo.isEmpty() || contrasena.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar correo y contraseña para iniciar sesión", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
-        
+
+        // Almacenar el correo del usuario en la variable estática
+        correoUsuario = correo;
+
         Usuario user = new Usuario();
         user.setCorreo(correo);
         user.setContrasenia(contrasena);
 
         CtlrUsuario ct = new CtlrUsuario();
         ct.iniciarSesion(user);
-
-      
+       
     }//GEN-LAST:event_IniciarSesionActionPerformed
+     public static String getCorreoUsuario() {
+        return correoUsuario;
+        
+    }
 
     /**
      * @param args the command line arguments

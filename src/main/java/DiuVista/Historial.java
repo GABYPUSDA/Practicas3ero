@@ -4,6 +4,16 @@
  */
 package DiuVista;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author DELL
@@ -13,8 +23,12 @@ public class Historial extends javax.swing.JFrame {
     /**
      * Creates new form Historial
      */
-    public Historial() {
-        initComponents();
+    public Historial() throws SQLException {
+         initComponents();
+         setModelo();
+        cargarFletes(Login1.getCorreoUsuario());
+        
+        
     }
 
     /**
@@ -51,7 +65,7 @@ public class Historial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,12 +76,44 @@ public class Historial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+      private void setModelo() {
+        DefaultTableModel modelo = new DefaultTableModel(
+            new Object [][] {
+                // Initial data
+            },
+            new String [] {
+                "ID", "Lugar de Recogida", "Destino", "Fecha y Hora"
+            }
+        );
+        jTable1.setModel(modelo);
+    }
 
-    /**
-     * @param args the command line arguments
+    private void cargarFletes(String correoUsuario) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0); // Limpiar tabla antes de cargar nuevos datos
+
+        try (Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bddtrascentenario", "root", "1234")) {
+            try (PreparedStatement statement = connection.prepareStatement("CALL ObtenerFletesPorCorreo(?)")) {
+                statement.setString(1, correoUsuario);
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    int id = resultSet.getInt("id_viaje");
+                    String lugarRecogida = resultSet.getString("lugar_recogida");
+                    String destino = resultSet.getString("destino");
+                    Timestamp fechaHora = resultSet.getTimestamp("fecha_hora");
+
+                    model.addRow(new Object[]{id, lugarRecogida, destino, fechaHora});
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+     /* @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+  /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -79,24 +125,21 @@ public class Historial extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Historial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new Historial().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Historial.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
